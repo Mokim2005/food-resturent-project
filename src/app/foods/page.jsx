@@ -6,15 +6,16 @@ import InputSearch from "@/components/InputSearch";
 
 const getFoods = async () => {
   const res = await fetch(
-    " https://taxi-kitchen-api.vercel.app/api/v1/foods/random",
+    `https://taxi-kitchen-api.vercel.app/api/v1/foods/random?search=${search}`,
   );
   const data = await res.json();
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return data.foods || [];
 };
 
-const foodsPage = async () => {
-  const foods = await getFoods();
+const foodsPage = async ({searchParams}) => {
+  const {search = ''} = await searchParams
+  const foods = await getFoods(search);
   return (
     <div className="">
       <h2 className="text-4xl font-bold">
