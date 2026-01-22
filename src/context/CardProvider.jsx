@@ -17,7 +17,9 @@ const CartProvider = ({ children }) => {
   };
 
   return (
-    <cartContext.Provider value={cartInfo}>{children}</cartContext.Provider>
+    <cartContext.Provider value={cartInfo}>
+      {children}
+    </cartContext.Provider>
   );
 };
 
