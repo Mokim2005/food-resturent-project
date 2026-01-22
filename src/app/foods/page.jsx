@@ -7,7 +7,7 @@ const getFoods = async () => {
     " https://taxi-kitchen-api.vercel.app/api/v1/foods/random",
   );
   const data = await res.json();
-  await new Promise((resolve)=> setTimeout(resolve, 3000))
+  await new Promise((resolve)=> setTimeout(resolve, 1000))
   return data.foods || [];
 };
 
@@ -19,7 +19,7 @@ const foodsPage = async () => {
         Total <span className="text-yellow-600">{foods.length}</span> Foods
         Found
       </h2>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid md:grid-cols-2 grid-cols-1 items-center justify-center lg:grid-cols-3 gap-5">
         {foods.map((food) => (
           <FoodCard key={food.id} food={food}></FoodCard>
         ))}
