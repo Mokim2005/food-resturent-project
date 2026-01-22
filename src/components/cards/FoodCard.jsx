@@ -1,7 +1,8 @@
 import Link from "next/link";
+import CartButtons from "../buttons/CartButtons";
 
 const FoodCard = ({ food, onAddToCart, onViewDetails }) => {
-  const { title, foodImg,id, price, category } = food;
+  const { title, foodImg, id, price, category } = food;
 
   return (
     <div className="w-full max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
@@ -24,20 +25,13 @@ const FoodCard = ({ food, onAddToCart, onViewDetails }) => {
           {title}
         </h2>
 
-        <p className="text-xl font-bold text-stone-800">
-          ৳ {price}
-        </p>
+        <p className="text-xl font-bold text-stone-800">৳ {price}</p>
 
         {/* Buttons */}
         <div className="flex gap-3 pt-3">
-          <button
-            onClick={onAddToCart}
-            className="flex-1 bg-stone-800 text-white py-2 rounded-lg hover:bg-stone-700 transition"
-          >
-            Add to Cart
-          </button>
-
-          <Link href={`/foods/${id}`}
+          <CartButtons food={food}></CartButtons>
+          <Link
+            href={`/foods/${id}`}
             onClick={onViewDetails}
             className="flex-1 border border-stone-800 text-stone-800 py-2 rounded-lg hover:bg-stone-800 hover:text-white transition"
           >

@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import CardProvider from "@/context/CardProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header className="px-5 py-2 items-center flex justify-between gap-5 bg-stone-800">
-          <Link href='/'>
+          <Link href="/">
             <img src="/logo.png" alt="" className="w-[60px] rounded-xl" />
           </Link>
           <div className="space-x-5">
@@ -36,7 +37,9 @@ export default function RootLayout({ children }) {
             </Link>
           </div>
         </header>
-        <main className="px-5 py-8">{children}</main>
+        <main className="px-5 py-8">
+          <CardProvider>{children}</CardProvider>
+        </main>
       </body>
     </html>
   );
