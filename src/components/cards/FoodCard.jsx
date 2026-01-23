@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CartButtons from "../buttons/CartButtons";
+import Image from "next/image";
 
 const FoodCard = ({ food, onAddToCart, onViewDetails }) => {
   const { title, foodImg, id, price, category } = food;
@@ -8,11 +9,18 @@ const FoodCard = ({ food, onAddToCart, onViewDetails }) => {
     <div className="w-full max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
       {/* Image */}
       <div className="h-48 w-full overflow-hidden">
-        <img
+        {/* <img
           src={foodImg}
           alt={title}
           className="h-full w-full object-cover hover:scale-105 transition duration-300"
-        />
+        /> */}
+        <Image
+          width={300}
+          height={150}
+          src={foodImg}
+          alt={title}
+          className="h-full w-full object-cover hover:scale-105 transition duration-300"
+        ></Image>
       </div>
 
       {/* Content */}
