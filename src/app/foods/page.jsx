@@ -4,6 +4,11 @@ import CartItems from "./CartItems";
 import InputSearch from "@/components/InputSearch";
 import next from "next";
 
+export const metadata = {
+  title: "All Foods",
+  description: "Best FastFood is Dinajpur",
+};
+
 const getFoods = async (search) => {
   try {
     // API URL-e query string-er handle kora (Search empty thakle full list ashar kotha)

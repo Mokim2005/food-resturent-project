@@ -1,4 +1,9 @@
 import React from "react";
+export const metadata = {
+  title: "Food Details",
+  description: "Best FastFood is Dinajpur",
+};
+
 
 export function generateStaticParams() {
   return [{ id: "52955" }, { id: "52955" }, { id: "52926" }];
