@@ -14,7 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Food Resturent",
+  title: {
+    default: "Food Resturent",
+    template: "%s || Food Resturent",
+  },
+
   description: "Best FastFood is Dinajpur",
 };
 
