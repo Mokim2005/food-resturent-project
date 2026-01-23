@@ -1,10 +1,14 @@
 import React from "react";
 
+export function generateStaticParams() {
+  return [{ id: "52955" }, { id: "52955" }, { id: "52926" }];
+}
+
 const getSingleFood = async (id) => {
   try {
     const res = await fetch(
       `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`,
-      { cache: "no-store" }
+      { cache: "no-store" },
     );
 
     if (!res.ok) {
@@ -27,28 +31,18 @@ const Page = async ({ params }) => {
   if (!food) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <h2 className="text-2xl font-semibold text-red-500">
-          Food Not Found
-        </h2>
+        <h2 className="text-2xl font-semibold text-red-500">Food Not Found</h2>
       </div>
     );
   }
 
-  const {
-    title,
-    foodImg,
-    price,
-    category,
-    area,
-    video,
-  } = food;
+  const { title, foodImg, price, category, area, video } = food;
 
-  console.log(food)
+  console.log(food);
 
   return (
     <div className="max-w-6xl mx-auto px-5 py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        
         {/* Image */}
         <div className="rounded-2xl overflow-hidden shadow-lg">
           <img
@@ -64,17 +58,13 @@ const Page = async ({ params }) => {
             {category}
           </span>
 
-          <h1 className="text-3xl font-bold text-gray-800">
-            {title}
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
 
           <p className="text-gray-600">
             <span className="font-medium">Cuisine:</span> {area}
           </p>
 
-          <p className="text-2xl font-bold text-stone-800">
-            ৳ {price}
-          </p>
+          <p className="text-2xl font-bold text-stone-800">৳ {price}</p>
 
           {/* Buttons */}
           <div className="flex gap-4 pt-4">

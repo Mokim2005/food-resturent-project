@@ -2,16 +2,19 @@ import FoodCard from "@/components/cards/FoodCard";
 import React, { Suspense } from "react";
 import CartItems from "./CartItems";
 import InputSearch from "@/components/InputSearch";
+import next from "next";
 
 const getFoods = async (search) => {
   try {
     // API URL-e query string-er handle kora (Search empty thakle full list ashar kotha)
-    const url = search 
+    const url = search
       ? `https://taxi-kitchen-api.vercel.app/api/v1/foods/random?search=${search}`
       : `https://taxi-kitchen-api.vercel.app/api/v1/foods/random`;
 
-    const res = await fetch(url, { cache: "no-store" });
-
+    const res = await fetch(url, {
+      next: { revalidate: 10 }, // ✅ 10s পর নতুন data
+      cache: "force-cache", // ✅ reload এ same data
+    });
     if (!res.ok) {
       console.error("API Fetch Error:", res.status);
       return [];
@@ -21,8 +24,7 @@ const getFoods = async (search) => {
 
     // API structure check: data.foods na thakle direct 'data' array kina dekha
     // Onek somoy API theke data.foods ase, abar kokhono direct array ase.
-    return data.foods || data || []; 
-
+    return data.foods || data || [];
   } catch (error) {
     console.error("Fetch failed:", error);
     return [];
@@ -38,7 +40,8 @@ const FoodsPage = async ({ searchParams }) => {
   return (
     <div className="p-4">
       <h2 className="text-4xl font-bold">
-        Total <span className="text-yellow-600">{foods?.length || 0}</span> Foods Found
+        Total <span className="text-yellow-600">{foods?.length || 0}</span>{" "}
+        Foods Found
       </h2>
 
       <div className="my-4">
@@ -56,7 +59,9 @@ const FoodsPage = async ({ searchParams }) => {
             ))
           ) : (
             <div className="col-span-full text-center py-10">
-              <p className="text-xl text-gray-500">No foods found for "{search}"</p>
+              <p className="text-xl text-gray-500">
+                No foods found for "{search}"
+              </p>
             </div>
           )}
         </div>
