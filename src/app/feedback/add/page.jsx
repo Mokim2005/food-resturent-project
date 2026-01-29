@@ -1,11 +1,12 @@
-import React from 'react';
+import FeedbackForm from "@/components/forms/FeedbackForm";
+
 
 const AddFeedback = () => {
-    return (
-        <div>
-            Add Feedback
-        </div>
-    );
+  return (
+    <div>
+      <FeedbackForm></FeedbackForm>
+    </div>
+  );
 };
 
 export default AddFeedback;
