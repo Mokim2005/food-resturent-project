@@ -17,14 +17,14 @@ export default function FeedbackCard({ feedback, onUpdate, onDelete }) {
 
       <div className="flex gap-2 pt-2">
         <button
-          onClick={() => onUpdate(_id)}
+          onClick={() => onUpdate && onUpdate(_id)}
           className="px-4 py-1.5 text-sm rounded-md bg-blue-500 text-white hover:bg-blue-600"
         >
           Update
         </button>
 
         <button
-          onClick={() => onDelete(_id)}
+          onClick={() => onDelete && onDelete(_id)}
           className="px-4 py-1.5 text-sm rounded-md bg-red-500 text-white hover:bg-red-600"
         >
           Delete
