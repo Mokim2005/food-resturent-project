@@ -13,6 +13,7 @@ const getFeedback = async () => {
 const FeedbackPage = async () => {
   const feedback = await getFeedback();
   console.log(feedback);
+
   return (
     <div>
       <div className="">
